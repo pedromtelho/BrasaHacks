@@ -1,3 +1,7 @@
+import 'dart:convert';
+
+import 'package:ehlo55front/components/CustomCard.dart';
+import 'package:ehlo55front/components/DriverView/ListCards.dart';
 import 'package:ehlo55front/components/HexColor.dart';
 import 'package:ehlo55front/components/SideBar.dart';
 import 'package:ehlo55front/components/TextMont.dart';
@@ -11,8 +15,39 @@ class DriverView extends StatefulWidget {
 }
 
 class _DriverViewState extends State<DriverView> {
+  String geolocation;
+  List<String> data;
+
+  Future fetchData(String url) async {
+    final response = await http.get(url);
+    if (response.statusCode == 200) {
+      geolocation = json.decode(response.body)["geolocation"];
+      data = geolocation.split(' ');
+      return json.decode(response.body);
+    } else {
+      throw Exception('Failed to load album');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    fetchData(
+        'http://192.168.50.94:3000/shipping/next/5e651dc4c4320757c93594f5');
+    List<CustomCard> cardsList = [
+      CustomCard(
+          colorCard: HexColor("#EEEEEE"),
+          textCard: "Rotas",
+          icon: Icon(Icons.airport_shuttle),
+          onTap: "map",
+          data: data),
+      CustomCard(
+        colorCard: HexColor("#EEEEEE"),
+        textCard: "Pagamento",
+        icon: Icon(Icons.attach_money),
+        onTap: "pay",
+      )
+    ];
+
     return MyHomePage(
       colorAppBar: HexColor("#2E008B"),
       component: Container(
@@ -49,33 +84,9 @@ class _DriverViewState extends State<DriverView> {
             ),
             Divider(
               color: HexColor("#2E008B"),
-              height: 15,
+              height: 30,
             ),
-            Expanded(
-              child: ListView(
-                scrollDirection: Axis.vertical,
-                shrinkWrap: true,
-                padding: EdgeInsets.all(15.0),
-                children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.all(5),
-                    child: Column(children: <Widget>[
-                      Card(
-                        color: HexColor("#EEEEEE"),
-                        child: Column(
-                          children: <Widget>[
-                            ListTile(
-                              leading: Icon(Icons.airport_shuttle),
-                              title: TextMont(text: "Rotas"),
-                            )
-                          ],
-                        ),
-                      )
-                    ]),
-                  ),
-                ],
-              ),
-            ),
+            ListCards(cardsList),
           ],
         ),
       ),
