@@ -1,5 +1,6 @@
 import 'package:ehlo55front/components/CustomCard.dart';
 import 'package:ehlo55front/components/DriverView/MapUtils.dart';
+import 'package:ehlo55front/models/InfoShip.dart';
 import 'package:flutter/material.dart';
 import '../TextMont.dart';
 
@@ -11,8 +12,15 @@ class ListCards extends StatefulWidget {
 }
 
 class _ListCardsState extends State<ListCards> {
-  openMap(String latitude, String longitude) {
-    MapUtils.openMap(double.parse(latitude), double.parse(longitude));
+  openMap(Map data) {
+    InfoShip(
+      productBrand: data["productBrand"],
+      productType: data["productType"],
+      quantity: data["quantity"],
+    );
+    String geolocation = data["geolocation"];
+    List dataL = geolocation.split(' ');
+    MapUtils.openMap(double.parse(dataL[0]), double.parse(dataL[1]));
   }
 
   @override
@@ -42,7 +50,7 @@ class _ListCardsState extends State<ListCards> {
                     ),
                     onTap: () {
                       item.onTap == "map"
-                          ? openMap(item.data[0], item.data[1])
+                          ? openMap(item.allData)
                           : item.onTap == "pay"
                               ? Navigator.pushNamed(context, '/Payment')
                               : print("");
