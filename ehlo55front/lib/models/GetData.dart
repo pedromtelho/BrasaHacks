@@ -1,14 +1,13 @@
+import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:flutter/material.dart';
 
-class GetData extends StatefulWidget {
-  @override
-  _GetDataState createState() => _GetDataState();
-}
-
-class _GetDataState extends State<GetData> {
-  @override
-  Widget build(BuildContext context) {
-    return Container();
+class GetData {
+  Future fetchData(String url) async {
+    final response = await http.get(url);
+    if (response.statusCode == 200) {
+      return json.decode(response.body);
+    } else {
+      throw Exception('Failed to load');
+    }
   }
 }

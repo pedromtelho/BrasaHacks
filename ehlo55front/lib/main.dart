@@ -1,4 +1,5 @@
-import 'package:ehlo55front/views/DriverView.dart';
+import 'package:ehlo55front/views/DriverViews/DriverPayment.dart';
+import 'package:ehlo55front/views/DriverViews/DriverView.dart';
 import 'package:ehlo55front/views/RoleSelector.dart';
 import 'package:flutter/material.dart';
 
@@ -14,6 +15,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => RoleSelector(),
         '/Caminhoneiro': (context) => DriverView(),
+        '/Payment': (context) => DriverPayment(),
       },
     );
   }
