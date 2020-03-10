@@ -1,3 +1,4 @@
+import 'package:ehlo55front/components/Button.dart';
 import 'package:ehlo55front/components/DriverView/QRPayment.dart';
 import 'package:ehlo55front/components/HexColor.dart';
 import 'package:ehlo55front/components/TextMont.dart';
@@ -69,7 +70,34 @@ class _DriverPaymentState extends State<DriverPayment> {
                       ),
                     ),
                   ),
-                  QRPayment(data, 250)
+                  QRPayment(data, 250),
+                  Flexible(
+                    flex: 1,
+                    child: TextMont(
+                      fontWeight: FontWeight.w200,
+                      color: HexColor("#FFFFFF"),
+                      textAlign: TextAlign.center,
+                      text: "Após a leitura você será redirecionado",
+                      textSize: 15,
+                    ),
+                  ),
+                  Flexible(
+                    flex: 1,
+                    child: Button(
+                      onPressed: () {
+                        Navigator.pushNamed(context, "/Caminhoneiro");
+                      },
+                      borderRadius: BorderRadius.circular(25.0),
+                      backgroundColor: HexColor("#FFFFFF"),
+                      borderColor: HexColor("#FFFFFF"),
+                      child: TextMont(
+                        text: "VOLTAR",
+                        color: HexColor("#2E008B"),
+                        textSize: 15,
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  )
                 ],
               );
             } else {
