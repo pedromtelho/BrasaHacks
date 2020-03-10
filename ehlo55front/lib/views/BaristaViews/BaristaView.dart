@@ -100,7 +100,22 @@ class _BaristaViewState extends State<BaristaView> {
       sideBar: SideBar(
         backgroundColorAvatar: HexColor("#2E008B"),
         id: "13412341",
-        listTiles: ["Histórico", "Reportar problema"],
+        mapTiles: {
+          "Histórico": {
+            "icon": Icon(
+              Icons.history,
+              color: HexColor("#2E008B"),
+              size: 30,
+            )
+          },
+          "Reportar problema": {
+            "icon": Icon(
+              Icons.info_outline,
+              color: HexColor("#2E008B"),
+              size: 30,
+            )
+          }
+        },
         email: "joaquim@joaquim.com",
         name: "Joaquim",
       ),

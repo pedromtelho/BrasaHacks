@@ -18,9 +18,6 @@ class _DriverPaymentState extends State<DriverPayment> {
 
   Future fetchData(
       String url, String brand, String type, String quantity) async {
-    print("quantity: " + quantity);
-    print("type: " + type);
-    print("brand: " + brand);
     var body = json.encode({
       'signature': 'Fazer do algoritmo',
       'lastUpdateHash': 'pegar automaticamente (info shippment)',
@@ -50,7 +47,7 @@ class _DriverPaymentState extends State<DriverPayment> {
       body: Container(
         child: FutureBuilder(
           future: fetchData(
-              'http://192.168.15.20:3000/shipping/5e651dc4c4320757c93594f5',
+              'http://10.92.175.188:3000/shipping/5e651dc4c4320757c93594f5',
               args.productBrand,
               args.productType,
               args.quantity),
