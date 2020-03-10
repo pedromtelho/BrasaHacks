@@ -8,19 +8,35 @@ class SideBar extends StatefulWidget {
   String id;
   String email;
   Color backgroundColorAvatar;
-  List<String> listTiles;
+  Map<String, Map> mapTiles;
   SideBar(
       {this.name,
       this.id,
       this.email,
       this.backgroundColorAvatar,
-      this.listTiles});
+      this.mapTiles});
 
   @override
   _SideBarState createState() => _SideBarState();
 }
 
 class _SideBarState extends State<SideBar> {
+  List<ListTile> listTileGenerator = [];
+
+  dynamic getTiles(dynamic mapTiles) {
+    widget.mapTiles.forEach((key, value) {
+      listTileGenerator.add(ListTile(
+        leading: value["icon"],
+        onTap: () => {},
+        title: TextMont(
+          text: key,
+          textSize: 17,
+        ),
+      ));
+    });
+    return listTileGenerator;
+  }
+
   @override
   Widget build(BuildContext context) {
     double c_width = MediaQuery.of(context).size.width * 0.8;
@@ -69,7 +85,7 @@ class _SideBarState extends State<SideBar> {
                     color: HexColor("#2E008B"),
                   ),
                   ListTile(
-                    onTap: () => {},
+                    onTap: () => {Navigator.pushNamed(context, '/')},
                     title: TextMont(
                       text: "Home",
                       textSize: 17,
@@ -81,26 +97,28 @@ class _SideBarState extends State<SideBar> {
                     ),
                   ),
                   Divider(),
-                  for (var tilesName in widget.listTiles)
-                    Column(
-                      children: <Widget>[
-                        ListTile(
-                          onTap: () => {},
-                          title: TextMont(
-                            text: tilesName,
-                            textSize: 17,
-                          ),
-                        ),
-                        Divider(),
-                      ],
-                    ),
+                  // for (var tilesName in widget.listTiles)
+
+                  Column(
+                    children: <Widget>[
+                      for (var i in getTiles(widget.mapTiles)) i,
+                      // ListTile(
+                      //   onTap: () => {},
+                      //   title: TextMont(
+                      //     text: tilesName,
+                      //     textSize: 17,
+                      //   ),
+                      // ),
+                      // Divider(),
+                    ],
+                  ),
                 ],
               ),
             ),
             Column(
               children: <Widget>[
                 ListTile(
-                  onTap: () => {},
+                  onTap: () => {Navigator.pushNamed(context, '/')},
                   title: TextMont(
                     text: "Logout",
                     textSize: 17,
