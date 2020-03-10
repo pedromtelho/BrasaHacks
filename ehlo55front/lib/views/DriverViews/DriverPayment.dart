@@ -38,7 +38,7 @@ class _DriverPaymentState extends State<DriverPayment> {
 
   @override
   Widget build(BuildContext context) {
-    fetchData('http://192.168.50.94:3000/shipping/5e651dc4c4320757c93594f5');
+    fetchData('http://192.168.15.20:3000/shipping/5e651dc4c4320757c93594f5');
     return Scaffold(
       backgroundColor: HexColor('#2E008B'),
       body: Container(
