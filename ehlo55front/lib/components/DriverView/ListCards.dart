@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:ehlo55front/components/CustomCard.dart';
 import 'package:ehlo55front/components/DriverView/MapUtils.dart';
 import 'package:ehlo55front/models/InfoShip.dart';
+import 'package:ehlo55front/views/DriverViews/DriverPayment.dart';
 import 'package:flutter/material.dart';
 import '../TextMont.dart';
 import 'package:http/http.dart' as http;
@@ -21,12 +22,23 @@ class _ListCardsState extends State<ListCards> {
     final response = await http.get(url);
     if (response.statusCode == 200) {
       geolocation = json.decode(response.body)["geolocation"];
-      InfoShip(
-          productBrand: json.decode(response.body)["productBrand"],
-          productType: json.decode(response.body)["productType"],
-          quantity: json.decode(response.body)["quantity"]);
       data = geolocation.split(' ');
       MapUtils.openMap(double.parse(data[0]), double.parse(data[1]));
+      return json.decode(response.body);
+    } else {
+      throw Exception('Failed to load album');
+    }
+  }
+
+  Future getData(String url) async {
+    final response = await http.get(url);
+    if (response.statusCode == 200) {
+      Navigator.pushNamed(context, '/Payment',
+          arguments: InfoShip(
+            json.decode(response.body)["quantity"].toString(),
+            json.decode(response.body)["productType"].toString(),
+            json.decode(response.body)["productBrand"].toString(),
+          ));
       return json.decode(response.body);
     } else {
       throw Exception('Failed to load album');
@@ -59,12 +71,14 @@ class _ListCardsState extends State<ListCards> {
                       ),
                     ),
                     onTap: () {
-                      item.onTap == "map"
-                          ? fetchData(
-                              'http://192.168.15.20:3000/shipping/next/5e651dc4c4320757c93594f5')
-                          : item.onTap == "pay"
-                              ? Navigator.pushNamed(context, '/Payment')
-                              : print("");
+                      if (item.onTap == "map") {
+                        fetchData(
+                            'http://192.168.15.20:3000/shipping/next/5e651dc4c4320757c93594f5');
+                      }
+                      if (item.onTap == "pay") {
+                        getData(
+                            'http://192.168.15.20:3000/shipping/next/5e651dc4c4320757c93594f5');
+                      }
                     },
                   ),
               ],
