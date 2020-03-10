@@ -33,7 +33,7 @@ class _ListCardsState extends State<ListCards> {
   Future getData(String url) async {
     final response = await http.get(url);
     if (response.statusCode == 200) {
-      Navigator.pushNamed(context, '/Payment',
+      Navigator.pushNamed(context, '/pay',
           arguments: InfoShip(
             json.decode(response.body)["quantity"].toString(),
             json.decode(response.body)["productType"].toString(),
@@ -74,10 +74,14 @@ class _ListCardsState extends State<ListCards> {
                       if (item.onTap == "map") {
                         fetchData(
                             'http://192.168.15.20:3000/shipping/next/5e651dc4c4320757c93594f5');
-                      }
-                      if (item.onTap == "pay") {
+                      } else if (item.onTap == "pay") {
                         getData(
                             'http://192.168.15.20:3000/shipping/next/5e651dc4c4320757c93594f5');
+                      } else {
+                        Navigator.pushNamed(
+                          context,
+                          item.onTap,
+                        );
                       }
                     },
                   ),

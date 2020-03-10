@@ -27,7 +27,7 @@ class _DriverPaymentState extends State<DriverPayment> {
       'transactionType': '0',
       'productBrand': brand,
       'productType': type,
-      // 'productQuantity': quantity,
+      'productQuantity': quantity,
     });
     final response = await http.post(
       url,

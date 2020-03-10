@@ -18,10 +18,10 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => RoleSelector(),
         '/Caminhoneiro': (context) => DriverView(),
-        '/Payment': (context) => DriverPayment(),
-      //  '/Barista': (context) => BaristaView(),
-      //  '/Pedidos': (context) => BaristaOrdersView(),
-      //  '/Storage': (context) => BaristaStorageView()        
+        '/pay': (context) => DriverPayment(),
+        //  '/Barista': (context) => BaristaView(),
+        //  '/Pedidos': (context) => BaristaOrdersView(),
+        //  '/Storage': (context) => BaristaStorageView()
       },
     );
   }

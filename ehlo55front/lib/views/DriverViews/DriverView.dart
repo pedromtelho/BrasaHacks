@@ -31,7 +31,7 @@ class _DriverViewState extends State<DriverView> {
         colorCard: HexColor("#EEEEEE"),
         textCard: "Pagamento",
         icon: Icon(Icons.attach_money),
-        onTap: "/DriverPayment",
+        onTap: "pay",
       )
     ];
 
