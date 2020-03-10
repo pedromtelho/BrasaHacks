@@ -5,8 +5,14 @@ class Button extends StatefulWidget {
   Color backgroundColor;
   Color borderColor;
   BorderRadius borderRadius;
+  Function onPressed;
+
   Button(
-      {this.child, this.backgroundColor, this.borderColor, this.borderRadius});
+      {this.child,
+      this.backgroundColor,
+      this.borderColor,
+      this.borderRadius,
+      this.onPressed});
   @override
   _ButtonState createState() => _ButtonState();
 }
@@ -19,7 +25,7 @@ class _ButtonState extends State<Button> {
           borderRadius: widget.borderRadius,
           side: BorderSide(color: widget.borderColor)),
       child: widget.child,
-      onPressed: () {},
+      onPressed: widget.onPressed,
       color: widget.backgroundColor,
     );
   }
