@@ -53,12 +53,7 @@ class _RoleSelectorState extends State<RoleSelector> {
                     ),
                     iconSize: 20,
                     dropdownValue: '',
-                    dropdownItems: [
-                      'Supermercado',
-                      'Caminhoneiro',
-                      'Barista',
-                      'Transportadora'
-                    ],
+                    dropdownItems: ['Supermercado', 'Caminhoneiro', 'Barista'],
                     itemsColor: Colors.black,
                     navigate: true,
                   ),

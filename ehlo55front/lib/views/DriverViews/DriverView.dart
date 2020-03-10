@@ -48,6 +48,7 @@ class _DriverViewState extends State<DriverView> {
                 Padding(
                   padding: EdgeInsets.fromLTRB(50, 10, 0, 0),
                   child: TextMont(
+                    fontWeight: FontWeight.w200,
                     text: "Boa Tarde,",
                     textSize: 40,
                   ),
@@ -62,6 +63,7 @@ class _DriverViewState extends State<DriverView> {
                 Padding(
                   padding: EdgeInsets.fromLTRB(0, 0, 50, 0),
                   child: TextMont(
+                    fontWeight: FontWeight.w200,
                     text: "Joaquim :)",
                     textSize: 35,
                     textAlign: TextAlign.right,
