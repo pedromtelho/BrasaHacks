@@ -7,6 +7,8 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class DriverPayment extends StatefulWidget {
+  InfoShip infoShip;
+  DriverPayment({this.infoShip});
   @override
   _DriverPaymentState createState() => _DriverPaymentState();
 }
@@ -14,14 +16,18 @@ class DriverPayment extends StatefulWidget {
 class _DriverPaymentState extends State<DriverPayment> {
   String data;
 
-  Future fetchData(String url) async {
-    var body = jsonEncode({
+  Future fetchData(
+      String url, String brand, String type, String quantity) async {
+    print("quantity: " + quantity);
+    print("type: " + type);
+    print("brand: " + brand);
+    var body = json.encode({
       'signature': 'Fazer do algoritmo',
       'lastUpdateHash': 'pegar automaticamente (info shippment)',
       'transactionType': '0',
-      'productBrand': InfoShip().productBrand,
-      'productType': InfoShip().productType,
-      'productQuantity': InfoShip().quantity.toString(),
+      'productBrand': brand,
+      'productType': type,
+      // 'productQuantity': quantity,
     });
     final response = await http.post(
       url,
@@ -38,28 +44,43 @@ class _DriverPaymentState extends State<DriverPayment> {
 
   @override
   Widget build(BuildContext context) {
-    fetchData('http://192.168.15.20:3000/shipping/5e651dc4c4320757c93594f5');
+    final InfoShip args = ModalRoute.of(context).settings.arguments;
     return Scaffold(
       backgroundColor: HexColor('#2E008B'),
       body: Container(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: <Widget>[
-            Flexible(
-              flex: 1,
-              child: Padding(
-                padding: EdgeInsets.all(10),
-                child: TextMont(
-                  fontWeight: FontWeight.w200,
-                  color: HexColor("#FFFFFF"),
-                  textAlign: TextAlign.center,
-                  text: "Apresente o QR code para o destinatário",
-                  textSize: 30,
-                ),
-              ),
-            ),
-            QRPayment(data, 250)
-          ],
+        child: FutureBuilder(
+          future: fetchData(
+              'http://192.168.15.20:3000/shipping/5e651dc4c4320757c93594f5',
+              args.productBrand,
+              args.productType,
+              args.quantity),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Flexible(
+                    flex: 1,
+                    child: Padding(
+                      padding: EdgeInsets.all(10),
+                      child: TextMont(
+                        fontWeight: FontWeight.w200,
+                        color: HexColor("#FFFFFF"),
+                        textAlign: TextAlign.center,
+                        text: "Apresente o QR code para o destinatário",
+                        textSize: 30,
+                      ),
+                    ),
+                  ),
+                  QRPayment(data, 250)
+                ],
+              );
+            } else {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+          },
         ),
       ),
     );
