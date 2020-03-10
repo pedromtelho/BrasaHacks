@@ -83,18 +83,20 @@ class _DriverPaymentState extends State<DriverPayment> {
                   ),
                   Flexible(
                     flex: 1,
-                    child: Button(
-                      onPressed: () {
-                        Navigator.pushNamed(context, "/Caminhoneiro");
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.pop(context);
                       },
-                      borderRadius: BorderRadius.circular(25.0),
-                      backgroundColor: HexColor("#FFFFFF"),
-                      borderColor: HexColor("#FFFFFF"),
-                      child: TextMont(
-                        text: "VOLTAR",
-                        color: HexColor("#2E008B"),
-                        textSize: 15,
-                        textAlign: TextAlign.center,
+                      child: Button(
+                        borderRadius: BorderRadius.circular(25.0),
+                        backgroundColor: HexColor("#FFFFFF"),
+                        borderColor: HexColor("#FFFFFF"),
+                        child: TextMont(
+                          text: "VOLTAR",
+                          color: HexColor("#2E008B"),
+                          textSize: 15,
+                          textAlign: TextAlign.center,
+                        ),
                       ),
                     ),
                   )
