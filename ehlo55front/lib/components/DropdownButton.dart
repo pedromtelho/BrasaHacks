@@ -43,7 +43,7 @@ class _DropdownButtonFormState extends State<DropdownButtonForm> {
         text: widget.hintText,
       ),
       icon: widget.icon,
-      iconSize: widget.iconSize, //20
+      iconSize: widget.iconSize,
       elevation: 16,
       style: TextStyle(color: Colors.white),
       underline: Container(
