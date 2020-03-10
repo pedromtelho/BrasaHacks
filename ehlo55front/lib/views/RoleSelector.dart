@@ -1,6 +1,7 @@
 import 'package:ehlo55front/components/Button.dart';
 import 'package:ehlo55front/components/DropdownButton.dart';
 import 'package:ehlo55front/components/HexColor.dart';
+import 'package:ehlo55front/components/Logo.dart';
 import 'package:ehlo55front/components/TextMont.dart';
 import 'package:flutter/material.dart';
 
@@ -20,12 +21,20 @@ class _RoleSelectorState extends State<RoleSelector> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              TextMont(
-                text: "SEJA BEM-VINDO",
-                color: Colors.white,
-                fontWeight: FontWeight.w300,
-                textSize: 40,
+              Flexible(
+                flex: 1,
+                child: Padding(
+                  padding: EdgeInsets.all(10),
+                  child: TextMont(
+                    fontWeight: FontWeight.w200,
+                    color: HexColor("#FFFFFF"),
+                    textAlign: TextAlign.center,
+                    text: "BEM-VINDO A",
+                    textSize: 40,
+                  ),
+                ),
               ),
+              Logo(),
               Padding(
                 padding: EdgeInsets.fromLTRB(0.0, 60.0, 0.0, 0.0),
                 child: Button(
