@@ -58,13 +58,14 @@ class _ListCardsState extends State<ListCards> {
                         ],
                       ),
                     ),
-                    onTap: () {
-                      item.onTap == "map"
-                          ? fetchData(
-                              'http://192.168.15.20:3000/shipping/next/5e651dc4c4320757c93594f5')
-                          : item.onTap == "pay"
-                              ? Navigator.pushNamed(context, '/Payment')
-                              : print("");
+                    onTap: () { if(item.onTap == "map"){
+                      fetchData('http://192.168.15.20:3000/shipping/next/5e651dc4c4320757c93594f5');
+                    } else {
+                      Navigator.pushNamed(context, item.onTap);
+                    }
+                      
+                        
+                              
                     },
                   ),
               ],
