@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:ehlo55front/components/CustomCard.dart';
 import 'package:ehlo55front/components/DriverView/ListCards.dart';
 import 'package:ehlo55front/components/HexColor.dart';
@@ -7,7 +5,6 @@ import 'package:ehlo55front/components/SideBar.dart';
 import 'package:ehlo55front/components/TextMont.dart';
 import 'package:ehlo55front/views/MyHomePage.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 
 class DriverView extends StatefulWidget {
   @override
@@ -17,30 +14,20 @@ class DriverView extends StatefulWidget {
 class _DriverViewState extends State<DriverView> {
   String geolocation;
   List<String> data;
-
-  Future fetchData(String url) async {
-    final response = await http.get(url);
-    if (response.statusCode == 200) {
-      geolocation = json.decode(response.body)["geolocation"];
-      data = geolocation.split(' ');
-      return json.decode(response.body);
-    } else {
-      throw Exception('Failed to load album');
-    }
-  }
+  Map allData;
 
   @override
   Widget build(BuildContext context) {
-    fetchData(
-        'http://192.168.50.94:3000/shipping/next/5e651dc4c4320757c93594f5');
     List<CustomCard> cardsList = [
       CustomCard(
+          allData: allData,
           colorCard: HexColor("#EEEEEE"),
           textCard: "Rotas",
           icon: Icon(Icons.airport_shuttle),
           onTap: "map",
           data: data),
       CustomCard(
+        allData: allData,
         colorCard: HexColor("#EEEEEE"),
         textCard: "Pagamento",
         icon: Icon(Icons.attach_money),

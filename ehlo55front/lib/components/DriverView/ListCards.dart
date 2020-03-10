@@ -1,7 +1,10 @@
+import 'dart:convert';
 import 'package:ehlo55front/components/CustomCard.dart';
 import 'package:ehlo55front/components/DriverView/MapUtils.dart';
+import 'package:ehlo55front/models/InfoShip.dart';
 import 'package:flutter/material.dart';
 import '../TextMont.dart';
+import 'package:http/http.dart' as http;
 
 class ListCards extends StatefulWidget {
   List<CustomCard> card;
@@ -11,8 +14,23 @@ class ListCards extends StatefulWidget {
 }
 
 class _ListCardsState extends State<ListCards> {
-  openMap(String latitude, String longitude) {
-    MapUtils.openMap(double.parse(latitude), double.parse(longitude));
+  String geolocation;
+  List<String> data;
+
+  Future fetchData(String url) async {
+    final response = await http.get(url);
+    if (response.statusCode == 200) {
+      geolocation = json.decode(response.body)["geolocation"];
+      InfoShip(
+          productBrand: json.decode(response.body)["productBrand"],
+          productType: json.decode(response.body)["productType"],
+          quantity: json.decode(response.body)["quantity"]);
+      data = geolocation.split(' ');
+      MapUtils.openMap(double.parse(data[0]), double.parse(data[1]));
+      return json.decode(response.body);
+    } else {
+      throw Exception('Failed to load album');
+    }
   }
 
   @override
@@ -42,7 +60,8 @@ class _ListCardsState extends State<ListCards> {
                     ),
                     onTap: () {
                       item.onTap == "map"
-                          ? openMap(item.data[0], item.data[1])
+                          ? fetchData(
+                              'http://192.168.15.20:3000/shipping/next/5e651dc4c4320757c93594f5')
                           : item.onTap == "pay"
                               ? Navigator.pushNamed(context, '/Payment')
                               : print("");
