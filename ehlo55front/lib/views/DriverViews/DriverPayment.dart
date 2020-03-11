@@ -48,7 +48,7 @@ class _DriverPaymentState extends State<DriverPayment> {
       body: Container(
         child: FutureBuilder(
           future: fetchData(
-              'http://10.92.175.188:3000/shipping/5e651dc4c4320757c93594f5',
+              'http://10.102.5.118:3000/shipping/5e651dc4c4320757c93594f5',
               args.productBrand,
               args.productType,
               args.quantity),
