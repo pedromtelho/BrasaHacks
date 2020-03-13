@@ -37,33 +37,50 @@ class _MarketViewState extends State<MarketView> {
     ];
 
     return MyHomePage(
-      colorAppBar: HexColor("#2E008B"),
-      component: Column(
-        children: <Widget>[
-          Flexible(
-            flex: 1,
-            child: TextMont(
-              fontWeight: FontWeight.w200,
-              textAlign: TextAlign.left,
-              text: "Boa tarde,",
-              textSize: 40,
+      colorAppBar: HexColor("#000000"),
+      component: Container(
+        child: Column(
+          children: <Widget>[
+            Image.asset(
+              "assets/market.jpg",
+              fit: BoxFit.fitWidth,
             ),
-          ),
-          Flexible(
-            flex: 1,
-            child: TextMont(
-              fontWeight: FontWeight.w200,
-              textAlign: TextAlign.end,
-              text: "Grupo Pão de Açúcar :)",
-              textSize: 35,
+            Flexible(
+              flex: 1,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0.0),
+                    child: TextMont(
+                      color: HexColor("#000000"),
+                      fontWeight: FontWeight.w200,
+                      text: "Boa Tarde,",
+                      textSize: 40,
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-          Divider(
-            color: HexColor("#2E008B"),
-            height: 30,
-          ),
-          ListCards(cardsList),
-        ],
+            Flexible(
+              flex: 1,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  TextMont(
+                    color: HexColor("#000000"),
+                    fontWeight: FontWeight.w200,
+                    text: "Grupo Pão de Açúcar :)",
+                    textSize: 35,
+                    textAlign: TextAlign.justify,
+                  ),
+                ],
+              ),
+            ),
+            Divider(),
+            ListCards(cardsList),
+          ],
+        ),
       ),
       backgroundColor: HexColor("#ffffff"),
       sideBar: SideBar(

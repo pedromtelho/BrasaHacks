@@ -39,7 +39,6 @@ class _DriverViewState extends State<DriverView> {
       colorAppBar: HexColor("#000000"),
       component: Container(
         child: Column(
-          // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             Image.asset(
               "assets/driverView.png",
