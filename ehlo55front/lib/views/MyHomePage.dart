@@ -22,6 +22,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: <Widget>[Image.asset("assets/logo.png")],
         title: widget.titleAppBar,
         backgroundColor: widget.colorAppBar,
       ),

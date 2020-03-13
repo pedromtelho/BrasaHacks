@@ -32,49 +32,55 @@ class _DriverViewState extends State<DriverView> {
         textCard: "Pagamento",
         icon: Icon(Icons.attach_money),
         onTap: "pay",
-      )
+      ),
     ];
 
     return MyHomePage(
-      colorAppBar: HexColor("#2E008B"),
+      colorAppBar: HexColor("#000000"),
       component: Container(
         child: Column(
+          // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            Flex(
-              direction: Axis.horizontal,
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.fromLTRB(50, 10, 0, 0),
-                  child: TextMont(
-                    fontWeight: FontWeight.w200,
-                    text: "Boa Tarde,",
-                    textSize: 40,
+            Image.asset(
+              "assets/driverView.png",
+              fit: BoxFit.fitWidth,
+            ),
+            Flexible(
+              flex: 1,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0.0),
+                    child: TextMont(
+                      color: HexColor("#000000"),
+                      fontWeight: FontWeight.w200,
+                      text: "Boa Tarde,",
+                      textSize: 40,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-            Flex(
-              direction: Axis.horizontal,
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.fromLTRB(0, 0, 50, 0),
-                  child: TextMont(
-                    fontWeight: FontWeight.w200,
-                    text: "Joaquim :)",
-                    textSize: 35,
-                    textAlign: TextAlign.right,
+            Flexible(
+              flex: 1,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
+                    child: TextMont(
+                      color: HexColor("#000000"),
+                      fontWeight: FontWeight.w200,
+                      text: "Joaquim :)",
+                      textSize: 35,
+                      textAlign: TextAlign.justify,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-            Divider(
-              color: HexColor("#2E008B"),
-              height: 30,
-            ),
+            Divider(),
             ListCards(cardsList),
           ],
         ),

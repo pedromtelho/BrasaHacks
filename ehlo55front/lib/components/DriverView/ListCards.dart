@@ -76,6 +76,7 @@ class _ListCardsState extends State<ListCards> {
   @override
   Widget build(BuildContext context) {
     return Expanded(
+      flex: 3,
       child: ListView(
         scrollDirection: Axis.vertical,
         shrinkWrap: true,

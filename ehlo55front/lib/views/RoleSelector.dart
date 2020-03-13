@@ -19,7 +19,7 @@ class _RoleSelectorState extends State<RoleSelector> {
         child: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("assets/inicial.png"),
+              image: AssetImage("assets/inicialRole.png"),
               fit: BoxFit.cover,
             ),
           ),
@@ -32,7 +32,7 @@ class _RoleSelectorState extends State<RoleSelector> {
                 child: Padding(
                   padding: EdgeInsets.all(10),
                   child: TextMont(
-                    fontWeight: FontWeight.w200,
+                    fontWeight: FontWeight.w300,
                     color: HexColor("#FFFFFF"),
                     textAlign: TextAlign.center,
                     text: "BEM-VINDO A",
