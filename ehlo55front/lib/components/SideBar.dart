@@ -82,7 +82,7 @@ class _SideBarState extends State<SideBar> {
                     ],
                   ),
                   Divider(
-                    color: HexColor("#2E008B"),
+                    color: HexColor("#000000"),
                   ),
                   ListTile(
                     onTap: () => {Navigator.pushNamed(context, '/')},
@@ -92,7 +92,7 @@ class _SideBarState extends State<SideBar> {
                     ),
                     leading: Icon(
                       Icons.home,
-                      color: HexColor("#2E008B"),
+                      color: HexColor("#000000"),
                       size: 30,
                     ),
                   ),
@@ -125,7 +125,7 @@ class _SideBarState extends State<SideBar> {
                   ),
                   leading: Icon(
                     Icons.clear,
-                    color: HexColor("#2E008B"),
+                    color: HexColor("#000000"),
                     size: 30,
                   ),
                 ),

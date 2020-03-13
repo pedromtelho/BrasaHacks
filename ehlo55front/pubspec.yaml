@@ -51,6 +51,7 @@ flutter:
     - assets/inicialRole.png
     - assets/driverView.png
     - assets/market.jpg
+    - assets/bar.jpg
     
 
   # To add assets to your application, add an assets section, like this:

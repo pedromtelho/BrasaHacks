@@ -19,9 +19,11 @@ class MyApp extends StatelessWidget {
         '/': (context) => RoleSelector(),
         '/Caminhoneiro': (context) => DriverView(),
         '/pay': (context) => DriverPayment(),
-        '/Supermercado': (context) => MarketView(),
+        '/Supermercado': (context) =>
+            MarketView("assets/market.jpg", "Grupo Pão de Açúcar :)"),
         '/Confirmation': (context) => ConfirmationScreen(),
-        '/Valid': (context) => Valid()
+        '/Valid': (context) => Valid(),
+        '/Barista': (context) => MarketView("assets/bar.jpg", "Bar do Joca :)"),
         //  '/Pedidos': (context) => BaristaOrdersView(),
         //  '/Storage': (context) => BaristaStorageView()
       },
