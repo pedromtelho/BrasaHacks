@@ -248,15 +248,10 @@ class _ConfirmationScreenState extends State<ConfirmationScreen> {
                   ),
                 ),
               ),
-              FlatButton(
-                  onPressed: () {
-                    print(composeJson());
-                  },
-                  child: new Text('test'))
-              // DragButton(
-              //   route: "/Valid",
-              //   object: InfoMarketPayment(composeJson()),
-              // )
+              DragButton(
+                route: "/Valid",
+                object: InfoMarketPayment(composeJson()),
+              )
             ],
           ),
         ),
