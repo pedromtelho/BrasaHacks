@@ -19,7 +19,7 @@ class _RoleSelectorState extends State<RoleSelector> {
         child: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("assets/inicial.png"),
+              image: AssetImage("assets/inicialRole.png"),
               fit: BoxFit.cover,
             ),
           ),
