@@ -32,7 +32,7 @@ class _RoleSelectorState extends State<RoleSelector> {
                 child: Padding(
                   padding: EdgeInsets.all(10),
                   child: TextMont(
-                    fontWeight: FontWeight.w200,
+                    fontWeight: FontWeight.w300,
                     color: HexColor("#FFFFFF"),
                     textAlign: TextAlign.center,
                     text: "BEM-VINDO A",
