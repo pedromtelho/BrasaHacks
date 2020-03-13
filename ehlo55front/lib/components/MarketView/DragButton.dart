@@ -5,7 +5,8 @@ import 'package:swipe_button/swipe_button.dart';
 
 class DragButton extends StatefulWidget {
   String route;
-  DragButton({this.route});
+  Object object;
+  DragButton({this.route, this.object});
   @override
   _DragButtonState createState() => _DragButtonState();
 }
@@ -18,6 +19,7 @@ class _DragButtonState extends State<DragButton> {
       child: Padding(
         padding: const EdgeInsets.all(24.0),
         child: SwipeButton(
+          colorBar: HexColor("#2E008B"),
           thumb: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -26,7 +28,7 @@ class _DragButtonState extends State<DragButton> {
                 child: Icon(
                   Icons.chevron_right,
                   size: 40.0,
-                  color: HexColor("#2E008B"),
+                  color: HexColor("#000000"),
                 ),
               ),
             ],
@@ -39,7 +41,8 @@ class _DragButtonState extends State<DragButton> {
           )),
           onChanged: (result) {
             if (result == SwipePosition.SwipeRight) {
-              Navigator.pushNamed(context, widget.route);
+              Navigator.pushNamed(context, widget.route,
+                  arguments: widget.object);
             } else {}
           },
         ),
