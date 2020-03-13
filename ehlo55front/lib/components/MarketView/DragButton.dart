@@ -19,7 +19,7 @@ class _DragButtonState extends State<DragButton> {
       child: Padding(
         padding: const EdgeInsets.all(24.0),
         child: SwipeButton(
-          colorBar: HexColor("#2E008B"),
+          colorBar: HexColor("#CCCCCC"),
           thumb: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[

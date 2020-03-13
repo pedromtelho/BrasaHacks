@@ -8,6 +8,9 @@ import 'package:ehlo55front/views/MyHomePage.dart';
 import 'package:flutter/material.dart';
 
 class MarketView extends StatefulWidget {
+  String image;
+  String meet;
+  MarketView(this.image, this.meet);
   @override
   _MarketViewState createState() => _MarketViewState();
 }
@@ -42,7 +45,7 @@ class _MarketViewState extends State<MarketView> {
         child: Column(
           children: <Widget>[
             Image.asset(
-              "assets/market.jpg",
+              widget.image,
               fit: BoxFit.fitWidth,
             ),
             Flexible(
@@ -70,7 +73,7 @@ class _MarketViewState extends State<MarketView> {
                   TextMont(
                     color: HexColor("#000000"),
                     fontWeight: FontWeight.w200,
-                    text: "Grupo Pão de Açúcar :)",
+                    text: widget.meet,
                     textSize: 35,
                     textAlign: TextAlign.justify,
                   ),
@@ -84,20 +87,20 @@ class _MarketViewState extends State<MarketView> {
       ),
       backgroundColor: HexColor("#ffffff"),
       sideBar: SideBar(
-        backgroundColorAvatar: HexColor("#2E008B"),
+        backgroundColorAvatar: HexColor("#000000"),
         id: "13412341",
         mapTiles: {
           "Histórico": {
             "icon": Icon(
               Icons.history,
-              color: HexColor("#2E008B"),
+              color: HexColor("#000000"),
               size: 30,
             )
           },
           "Reportar problema": {
             "icon": Icon(
               Icons.info_outline,
-              color: HexColor("#2E008B"),
+              color: HexColor("#000000"),
               size: 30,
             )
           }

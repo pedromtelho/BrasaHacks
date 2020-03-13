@@ -86,20 +86,20 @@ class _DriverViewState extends State<DriverView> {
       ),
       backgroundColor: HexColor("#ffffff"),
       sideBar: SideBar(
-        backgroundColorAvatar: HexColor("#2E008B"),
+        backgroundColorAvatar: HexColor("#000000"),
         id: "13412341",
         mapTiles: {
           "Histórico": {
             "icon": Icon(
               Icons.history,
-              color: HexColor("#2E008B"),
+              color: HexColor("#000000"),
               size: 30,
             )
           },
           "Reportar problema": {
             "icon": Icon(
               Icons.info_outline,
-              color: HexColor("#2E008B"),
+              color: HexColor("#000000"),
               size: 30,
             )
           }
