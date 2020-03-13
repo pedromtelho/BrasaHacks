@@ -17,6 +17,12 @@ class _RoleSelectorState extends State<RoleSelector> {
       backgroundColor: HexColor('#2E008B'),
       body: Center(
         child: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/inicial.png"),
+              fit: BoxFit.cover,
+            ),
+          ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -46,10 +52,10 @@ class _RoleSelectorState extends State<RoleSelector> {
                     hintFontSize: 17,
                     underlineHeight: 2,
                     underlineColor: Colors.white,
-                    hintColorText: HexColor('#2E008B'),
+                    hintColorText: HexColor('#000000'),
                     icon: Icon(
                       Icons.arrow_drop_down,
-                      color: HexColor('#2E008B'),
+                      color: HexColor('#000000'),
                     ),
                     iconSize: 20,
                     dropdownValue: '',
