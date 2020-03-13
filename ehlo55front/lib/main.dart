@@ -1,10 +1,8 @@
 import 'package:ehlo55front/views/DriverViews/DriverPayment.dart';
 import 'package:ehlo55front/views/DriverViews/DriverView.dart';
-import 'package:ehlo55front/views/BaristaViews/BaristaView.dart';
-import 'package:ehlo55front/views/BaristaViews/BaristaStorageView.dart';
-import 'package:ehlo55front/views/BaristaViews/BaristaOrdersView.dart';
 import 'package:ehlo55front/views/MarketView/ConfirmationScreen.dart';
 import 'package:ehlo55front/views/MarketView/MarketView.dart';
+import 'package:ehlo55front/views/MarketView/Valid.dart';
 import 'package:ehlo55front/views/RoleSelector.dart';
 import 'package:flutter/material.dart';
 
@@ -23,6 +21,7 @@ class MyApp extends StatelessWidget {
         '/pay': (context) => DriverPayment(),
         '/Supermercado': (context) => MarketView(),
         '/Confirmation': (context) => ConfirmationScreen(),
+        '/Valid': (context) => Valid()
         //  '/Pedidos': (context) => BaristaOrdersView(),
         //  '/Storage': (context) => BaristaStorageView()
       },
