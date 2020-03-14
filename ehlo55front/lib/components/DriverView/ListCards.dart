@@ -46,7 +46,7 @@ class _ListCardsState extends State<ListCards> {
     }
   }
 
-  Future fetchData(String url) async {
+  Future getNextShipmentRoute(String url) async {
     final response = await http.get(url);
     if (response.statusCode == 200) {
       geolocation = json.decode(response.body)["geolocation"];
@@ -58,7 +58,7 @@ class _ListCardsState extends State<ListCards> {
     }
   }
 
-  Future getData(String url) async {
+  Future getOrderDetailsData(String url) async {
     final response = await http.get(url);
     if (response.statusCode == 200) {
       Navigator.pushNamed(context, '/pay',
@@ -101,11 +101,11 @@ class _ListCardsState extends State<ListCards> {
                     ),
                     onTap: () {
                       if (item.onTap == "map") {
-                        fetchData(
-                            'http://10.102.5.118:3000/shipping/next/5e651dc4c4320757c93594f5');
+                        getNextShipmentRoute(
+                            'http://ehlo.toranja.xyz/shipping/next/5e6d414fa0f58524c223957d');
                       } else if (item.onTap == "pay") {
-                        getData(
-                            'http://10.102.5.118:3000/shipping/next/5e651dc4c4320757c93594f5');
+                        getOrderDetailsData(
+                            'http://ehlo.toranja.xyz/shipping/next/5e6d414fa0f58524c223957d');
                       } else if (item.onTap == "payBill") {
                         scan();
                       } else {
