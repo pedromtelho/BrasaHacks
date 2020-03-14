@@ -48,7 +48,7 @@ class _DriverPaymentState extends State<DriverPayment> {
       body: Container(
         child: FutureBuilder(
           future: fetchData(
-              'http://10.102.5.118:3000/shipping/5e651dc4c4320757c93594f5',
+              'http://ehlo.toranja.xyz/shipping/5e6d414fa0f58524c223957d',
               args.productBrand,
               args.productType,
               args.quantity),
@@ -84,10 +84,11 @@ class _DriverPaymentState extends State<DriverPayment> {
                   Flexible(
                     flex: 1,
                     child: GestureDetector(
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
                       child: Button(
+                        onPressed: (){
+                          Navigator.pop(context);
+
+                        },
                         borderRadius: BorderRadius.circular(25.0),
                         backgroundColor: HexColor("#FFFFFF"),
                         borderColor: HexColor("#FFFFFF"),
