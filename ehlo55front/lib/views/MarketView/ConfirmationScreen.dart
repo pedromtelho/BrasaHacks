@@ -31,9 +31,9 @@ class _ConfirmationScreenState extends State<ConfirmationScreen> {
         "lastUpdateHash": "pegar automaticamente (info shippment)",
         "shippmentUpdateDescriptor": {
           "transactionType": "1",
-          "productBrand": brandName,
-          "productType": typeName,
-          "quantity": quantityValue
+          "productBrand": this.brandName,
+          "productType": this.typeName,
+          "quantity": this.quantityValue
         },
         "signature": "Fazer do algoritimo"
       }
@@ -71,7 +71,8 @@ class _ConfirmationScreenState extends State<ConfirmationScreen> {
                         children: <Widget>[
                           Expanded(
                             child: TextField(
-                              onSubmitted: (String str) {
+                              controller: textEditingController,
+                              onChanged: (String str) {
                                 setState(() {
                                   switch (label) {
                                     case 'Marca do produto:':
