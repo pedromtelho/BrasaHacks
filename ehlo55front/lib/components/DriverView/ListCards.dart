@@ -46,7 +46,7 @@ class _ListCardsState extends State<ListCards> {
     }
   }
 
-  Future fetchData(String url) async {
+  Future getNextShipmentRoute(String url) async {
     final response = await http.get(url);
     if (response.statusCode == 200) {
       geolocation = json.decode(response.body)["geolocation"];
@@ -58,7 +58,7 @@ class _ListCardsState extends State<ListCards> {
     }
   }
 
-  Future getData(String url) async {
+  Future getOrderDetailsData(String url) async {
     final response = await http.get(url);
     if (response.statusCode == 200) {
       Navigator.pushNamed(context, '/pay',
@@ -101,12 +101,12 @@ class _ListCardsState extends State<ListCards> {
                     ),
                     onTap: () {
                       if (item.onTap == "map") {
-                        fetchData(
+                        getNextShipmentRoute(
                             'http://192.168.15.18:3000/shipping/next/5e651dc4c4320757c93594f5');
                       } else if (item.onTap == "pay") {
-                        getData(
+                        getOrderDetailsData(
                             'http://192.168.15.18:3000/shipping/next/5e651dc4c4320757c93594f5');
-                      } else if (item.onTap == "payBill") {
+                      }  else if (item.onTap == "payBill") {
                         scan();
                       } else {
                         Navigator.pushNamed(

@@ -84,10 +84,11 @@ class _DriverPaymentState extends State<DriverPayment> {
                   Flexible(
                     flex: 1,
                     child: GestureDetector(
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
                       child: Button(
+                        onPressed: (){
+                          Navigator.pop(context);
+
+                        },
                         borderRadius: BorderRadius.circular(25.0),
                         backgroundColor: HexColor("#FFFFFF"),
                         borderColor: HexColor("#FFFFFF"),
