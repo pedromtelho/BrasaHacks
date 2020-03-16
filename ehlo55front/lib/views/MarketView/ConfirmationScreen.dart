@@ -1,13 +1,11 @@
 import 'dart:convert';
 import 'package:ehlo55front/components/HexColor.dart';
 import 'package:ehlo55front/components/MarketView/DragButton.dart';
-import 'package:ehlo55front/components/MarketView/TextFormEdit.dart';
 import 'package:ehlo55front/components/TextMont.dart';
 import 'package:ehlo55front/models/InfoMarketPayment.dart';
 import 'package:ehlo55front/models/InfoPayment.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:swipe_button/swipe_button.dart';
 
 class ConfirmationScreen extends StatefulWidget {
   String value;
@@ -31,9 +29,9 @@ class _ConfirmationScreenState extends State<ConfirmationScreen> {
         "lastUpdateHash": "pegar automaticamente (info shippment)",
         "shippmentUpdateDescriptor": {
           "transactionType": "1",
-          "productBrand": brandName,
-          "productType": typeName,
-          "quantity": quantityValue
+          "productBrand": this.brandName,
+          "productType": this.typeName,
+          "quantity": this.quantityValue
         },
         "signature": "Fazer do algoritimo"
       }
@@ -48,145 +46,90 @@ class _ConfirmationScreenState extends State<ConfirmationScreen> {
       String hintText,
       TextInputType textInputType) {
     return Padding(
-        padding: EdgeInsets.fromLTRB(5.0, 10.0, 5.0, 5.0),
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.all(10),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    TextMont(
-                      fontWeight: FontWeight.w400,
-                      color: HexColor("#000000"),
-                      textAlign: TextAlign.justify,
-                      text: label,
-                      textSize: 20,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 15.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Expanded(
-                            child: TextField(
-                              onSubmitted: (String str) {
-                                setState(() {
-                                  switch (label) {
-                                    case 'Marca do produto:':
-                                      this.brandName =
-                                          textEditingController.text;
-                                      break;
-                                    case 'Tipo do produto:':
-                                      this.typeName =
-                                          textEditingController.text;
-                                      break;
-                                    case 'Quantidade:':
-                                      this.quantityValue =
-                                          textEditingController.text;
-                                      break;
-                                    default:
-                                      break;
-                                  }
-                                });
-                              },
-                              textAlign: TextAlign.center,
-                              keyboardType: textInputType,
-                              maxLines: 2,
-                              enabled: true,
-                              decoration: InputDecoration(
-                                  border: UnderlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Colors.blue[100])),
-                                  hintText: hintText),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
+      padding: EdgeInsets.fromLTRB(5.0, 10.0, 5.0, 5.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.all(10),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                TextMont(
+                  fontWeight: FontWeight.w400,
+                  color: HexColor("#000000"),
+                  textAlign: TextAlign.justify,
+                  text: label,
+                  textSize: 20,
                 ),
-              )
-            ]));
-    // TextMont(
-    //   fontWeight: FontWeight.w400,
-    //   color: HexColor("#000000"),
-    //   textAlign: TextAlign.justify,
-    //   text: "Tipo do produto: ",
-    //   textSize: 20,
-    // ),
-    // Padding(
-    //   padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 15.0),
-    //   child: Row(
-    //     mainAxisAlignment: MainAxisAlignment.center,
-    //     children: <Widget>[
-    //       Expanded(
-    //         child: TextField(
-    //           onSubmitted: (e) {
-    //             setState(() {
-    //               newType = e;
-    //             });
-    //           },
-    //           textAlign: TextAlign.center,
-    //           keyboardType: TextInputType.multiline,
-    //           maxLines: 2,
-    //           enabled: true,
-    //           decoration: InputDecoration(
-    //               border: UnderlineInputBorder(
-    //                   borderSide:
-    //                       BorderSide(color: Colors.blue[100])),
-    //               hintText: jsonArg["signed_data"]
-    //                           ["shippmentUpdateDescriptor"]
-    //                       ["productType"]
-    //                   .toString()),
-    //         ),
-    //       ),
-    //     ],
-    //   ),
-    // ),
-    // TextMont(
-    //   fontWeight: FontWeight.w400,
-    //   color: HexColor("#000000"),
-    //   textAlign: TextAlign.justify,
-    //   text: "Quantidade: ",
-    //   textSize: 20,
-    // ),
-    // Padding(
-    //   padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 15.0),
-    //   child: Row(
-    //     mainAxisAlignment: MainAxisAlignment.center,
-    //     children: <Widget>[
-    //       Expanded(
-    //         child: TextField(
-    //           onSubmitted: (e) {
-    //             setState(() {
-    //               newQuant = e;
-    //             });
-    //           },
-    //           textAlign: TextAlign.center,
-    //           keyboardType: TextInputType.multiline,
-    //           maxLines: 2,
-    //           enabled: true,
-    //           decoration: InputDecoration(
-    //               border: UnderlineInputBorder(
-    //                   borderSide:
-    //                       BorderSide(color: Colors.blue[100])),
-    //               hintText: jsonArg["signed_data"]
-    //                           ["shippmentUpdateDescriptor"]
-    //                       ["quantity"]
-    //                   .toString()),
-    //         ),
-    //       ),
-    //     ],
-    //   ),
-    // );
+                Padding(
+                  padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 15.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Expanded(
+                        child: TextField(
+                          controller: textEditingController,
+                          onChanged: (String str) {
+                            setState(() {
+                              switch (label) {
+                                case 'Marca do produto:':
+                                  this.brandName = textEditingController.text;
+                                  break;
+                                case 'Tipo do produto:':
+                                  this.typeName = textEditingController.text;
+                                  break;
+                                case 'Quantidade:':
+                                  this.quantityValue =
+                                      textEditingController.text;
+                                  break;
+                                default:
+                                  break;
+                              }
+                            });
+                          },
+                          textAlign: TextAlign.center,
+                          keyboardType: textInputType,
+                          maxLines: 2,
+                          enabled: true,
+                          decoration: InputDecoration(
+                              border: UnderlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Colors.blue[100])),
+                              hintText: hintText),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     InfoPayment args = ModalRoute.of(context).settings.arguments;
     var jsonArg = json.decode(args.data);
+
+    if (this.brandName == null) {
+      this.brandName = jsonArg["signed_data"]["shippmentUpdateDescriptor"]
+              ["productBrand"]
+          .toString();
+    }
+    if (this.typeName == null) {
+      this.typeName = jsonArg["signed_data"]["shippmentUpdateDescriptor"]
+              ["productType"]
+          .toString();
+    }
+    if (this.quantityValue == null) {
+      this.quantityValue = jsonArg["signed_data"]["shippmentUpdateDescriptor"]
+              ["quantity"]
+          .toString();
+    }
 
     return Scaffold(
       backgroundColor: HexColor('#FFFFFF'),
