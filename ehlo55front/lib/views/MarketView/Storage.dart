@@ -14,6 +14,7 @@ class Storage extends StatefulWidget {
 class _StorageState extends State<Storage> {
   var sendJson;
   String responseStatus;
+  String identificationScheme;
 
   insertNewPack(var data, String url) async {
     sendJson = {
@@ -29,6 +30,8 @@ class _StorageState extends State<Storage> {
     );
     if (response.statusCode == 200) {
       responseStatus = json.decode(response.body)["status"];
+      identificationScheme =
+          json.decode(response.body)["data"]["info"]["identificationScheme"];
       return json.decode(response.body);
     } else {
       throw Exception('Failed to load album');
@@ -73,9 +76,17 @@ class _StorageState extends State<Storage> {
                       fontWeight: FontWeight.w200,
                       color: HexColor("#000000"),
                       textAlign: TextAlign.center,
-                      text:
-                          "Verifique em seu estoque quais adesivos destacar da caixa.",
-                      textSize: 17,
+                      text: "Destaque os adesivos da caixa conforme a imagem.",
+                      textSize: 15,
+                    ),
+                    TextMont(
+                      fontWeight: FontWeight.w200,
+                      color: HexColor("#000000"),
+                      textAlign: TextAlign.center,
+                      text: identificationScheme
+                          .replaceAll('0', '⚫')
+                          .replaceAll('1', '⚪'),
+                      textSize: 25,
                     ),
                     Flexible(
                       flex: 1,
