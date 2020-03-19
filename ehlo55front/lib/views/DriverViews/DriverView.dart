@@ -29,8 +29,8 @@ class _DriverViewState extends State<DriverView> {
       CustomCard(
         allData: allData,
         colorCard: HexColor("#EEEEEE"),
-        textCard: "Pagamento",
-        icon: Icon(Icons.attach_money),
+        textCard: "Confirmar entrega",
+        icon: Icon(Icons.check),
         onTap: "pay",
       ),
     ];

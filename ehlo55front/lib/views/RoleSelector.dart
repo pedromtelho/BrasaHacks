@@ -14,7 +14,7 @@ class _RoleSelectorState extends State<RoleSelector> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: HexColor('#2E008B'),
+      backgroundColor: HexColor('#000000'),
       body: Center(
         child: Container(
           decoration: BoxDecoration(

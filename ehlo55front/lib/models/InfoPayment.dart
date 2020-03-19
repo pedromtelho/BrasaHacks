@@ -1,4 +1,5 @@
 class InfoPayment {
   String data;
-  InfoPayment(this.data);
+  String whoIsReceiving;
+  InfoPayment(this.data, this.whoIsReceiving);
 }

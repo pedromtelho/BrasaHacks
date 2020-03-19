@@ -1,9 +1,10 @@
 import 'dart:convert';
 import 'package:ehlo55front/components/CustomCard.dart';
 import 'package:ehlo55front/components/DriverView/MapUtils.dart';
+import 'package:ehlo55front/models/InfoAddItem.dart';
 import 'package:ehlo55front/models/InfoPayment.dart';
 import 'package:ehlo55front/models/InfoShip.dart';
-import 'package:ehlo55front/views/DriverViews/DriverPayment.dart';
+import 'package:ehlo55front/models/InfoStorage.dart';
 import 'package:flutter/material.dart';
 import '../TextMont.dart';
 import 'package:http/http.dart' as http;
@@ -22,13 +23,16 @@ class _ListCardsState extends State<ListCards> {
   List<String> data;
   String barcode = "";
 
-  Future scan() async {
+  Future scan(String whoCLicked, String flag) async {
     try {
       String barcode = await BarcodeScanner.scan();
       setState(() {
         this.barcode = barcode;
-        Navigator.pushNamed(context, "/Confirmation",
-            arguments: InfoPayment(barcode));
+        flag == "payBill"
+            ? Navigator.pushNamed(context, "/Confirmation",
+                arguments: InfoPayment(barcode, whoCLicked))
+            : Navigator.pushNamed(context, "/addTo",
+                arguments: InfoAddItem(barcode, whoCLicked));
       });
     } on PlatformException catch (e) {
       if (e.code == BarcodeScanner.CameraAccessDenied) {
@@ -73,6 +77,20 @@ class _ListCardsState extends State<ListCards> {
     }
   }
 
+  Future getStorageData(String url) async {
+    final response = await http.get(
+      url + '5e71708995d6b8119f2518af',
+      headers: {"Content-Type": "application/json"},
+    );
+    if (response.statusCode == 200) {
+      Navigator.pushNamed(context, '/Verify',
+          arguments: InfoStorage(json.decode(response.body)));
+      return json.decode(response.body);
+    } else {
+      throw Exception('Failed to load album');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -94,7 +112,10 @@ class _ListCardsState extends State<ListCards> {
                         children: <Widget>[
                           ListTile(
                             leading: item.icon,
-                            title: TextMont(text: item.textCard),
+                            title: TextMont(
+                              text: item.textCard,
+                              textSize: 15,
+                            ),
                           )
                         ],
                       ),
@@ -102,12 +123,15 @@ class _ListCardsState extends State<ListCards> {
                     onTap: () {
                       if (item.onTap == "map") {
                         getNextShipmentRoute(
-                            'http://192.168.15.18:3000/shipping/next/5e651dc4c4320757c93594f5');
+                            'http://ehlo.toranja.xyz/shipping/next/5e73db0c3be08f190d8f1bfc');
                       } else if (item.onTap == "pay") {
                         getOrderDetailsData(
-                            'http://192.168.15.18:3000/shipping/next/5e651dc4c4320757c93594f5');
-                      }  else if (item.onTap == "payBill") {
-                        scan();
+                            'http://ehlo.toranja.xyz/shipping/next/5e73db0c3be08f190d8f1bfc');
+                      } else if (item.onTap == "payBill" ||
+                          item.onTap == "addTo") {
+                        scan(item.whoClicked, item.onTap);
+                      } else if (item.onTap == "verify") {
+                        getStorageData('http://ehlo.toranja.xyz/stores/');
                       } else {
                         Navigator.pushNamed(
                           context,

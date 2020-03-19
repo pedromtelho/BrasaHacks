@@ -52,6 +52,7 @@ flutter:
     - assets/driverView.png
     - assets/market.jpg
     - assets/bar.jpg
+    - assets/frame_00_delay-0.05s.png
     
 
   # To add assets to your application, add an assets section, like this:

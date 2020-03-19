@@ -1,21 +1,27 @@
 import 'dart:convert';
 import 'package:ehlo55front/components/Button.dart';
-import 'package:ehlo55front/components/HexColor.dart';
 import 'package:ehlo55front/components/TextMont.dart';
-import 'package:ehlo55front/models/InfoMarketPayment.dart';
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:ehlo55front/components/HexColor.dart';
+import 'package:ehlo55front/models/InfoAddItem.dart';
+import 'package:flutter/material.dart';
 
-class Valid extends StatefulWidget {
+class Storage extends StatefulWidget {
   @override
-  _ValidState createState() => _ValidState();
+  _StorageState createState() => _StorageState();
 }
 
-class _ValidState extends State<Valid> with TickerProviderStateMixin {
+class _StorageState extends State<Storage> {
+  var sendJson;
   String responseStatus;
 
-  Future updateShippingBarSign(var data, String url) async {
-    var body = jsonEncode(data);
+  insertNewPack(var data, String url) async {
+    sendJson = {
+      'packageId': data,
+      'storeId': '5e71708995d6b8119f2518af',
+      'packQuantity': '3'
+    };
+    var body = jsonEncode(sendJson);
     final response = await http.post(
       url,
       body: body,
@@ -31,13 +37,14 @@ class _ValidState extends State<Valid> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    final InfoMarketPayment args = ModalRoute.of(context).settings.arguments;
+    InfoAddItem args = ModalRoute.of(context).settings.arguments;
+    var jsonArg = json.decode(args.data);
     return Scaffold(
       backgroundColor: HexColor('#fefefe'),
       body: Container(
         child: FutureBuilder(
-          future: updateShippingBarSign(args.data,
-              "http://ehlo.toranja.xyz/shipping/2/5e73db0c3be08f190d8f1bfc"),
+          future:
+              insertNewPack(jsonArg["id"], 'http://ehlo.toranja.xyz/stores/'),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               if (snapshot.data["status"] == "success") {
@@ -59,17 +66,23 @@ class _ValidState extends State<Valid> with TickerProviderStateMixin {
                       fontWeight: FontWeight.w200,
                       color: HexColor("#000000"),
                       textAlign: TextAlign.center,
-                      text: "Confirmação realizada com sucesso!",
+                      text: "Item adicionado!",
                       textSize: 35,
+                    ),
+                    TextMont(
+                      fontWeight: FontWeight.w200,
+                      color: HexColor("#000000"),
+                      textAlign: TextAlign.center,
+                      text:
+                          "Verifique em seu estoque quais adesivos destacar da caixa.",
+                      textSize: 17,
                     ),
                     Flexible(
                       flex: 1,
                       child: GestureDetector(
                         child: Button(
                           onPressed: () {
-                            args.whoIsReceiving == "market"
-                                ? Navigator.pushNamed(context, '/Supermercado')
-                                : Navigator.pushNamed(context, '/Barista');
+                            Navigator.pushNamed(context, '/Supermercado');
                           },
                           borderRadius: BorderRadius.circular(25.0),
                           backgroundColor: HexColor("#FFFFFF"),

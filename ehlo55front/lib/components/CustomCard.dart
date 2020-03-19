@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class CustomCard {
+  String id;
+  String whoClicked;
   Map allData;
   List data;
   Color colorCard;
@@ -8,7 +10,9 @@ class CustomCard {
   Icon icon;
   String onTap;
   CustomCard(
-      {this.colorCard,
+      {this.id,
+      this.whoClicked,
+      this.colorCard,
       this.textCard,
       this.icon,
       this.onTap,

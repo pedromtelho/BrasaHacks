@@ -1,4 +1,5 @@
 class InfoMarketPayment {
   var data;
-  InfoMarketPayment(this.data);
+  String whoIsReceiving;
+  InfoMarketPayment(this.data, this.whoIsReceiving);
 }
