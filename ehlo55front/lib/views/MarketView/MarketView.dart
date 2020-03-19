@@ -3,14 +3,14 @@ import 'package:ehlo55front/components/DriverView/ListCards.dart';
 import 'package:ehlo55front/components/HexColor.dart';
 import 'package:ehlo55front/components/SideBar.dart';
 import 'package:ehlo55front/components/TextMont.dart';
-import 'package:ehlo55front/models/InfoMarketPayment.dart';
 import 'package:ehlo55front/views/MyHomePage.dart';
 import 'package:flutter/material.dart';
 
 class MarketView extends StatefulWidget {
   String image;
   String meet;
-  MarketView(this.image, this.meet);
+  String flag;
+  MarketView(this.image, this.meet, this.flag);
   @override
   _MarketViewState createState() => _MarketViewState();
 }
@@ -19,26 +19,65 @@ class _MarketViewState extends State<MarketView> {
   String geolocation;
   List<String> data;
   Map allData;
+  List<CustomCard> cardsList;
+
+  buildCards() {
+    if (widget.flag == "market") {
+      cardsList = [
+        CustomCard(
+          whoClicked: widget.flag,
+          allData: allData,
+          colorCard: HexColor("#EEEEEE"),
+          textCard: "Confirmar recebimento de carga",
+          icon: Icon(
+            Icons.check,
+            size: 30,
+          ),
+          onTap: "payBill",
+        ),
+        CustomCard(
+          whoClicked: widget.flag,
+          allData: allData,
+          colorCard: HexColor("#EEEEEE"),
+          textCard: "Adicionar ao estoque",
+          icon: Icon(
+            Icons.playlist_add,
+            size: 30,
+          ),
+          onTap: "addTo",
+        ),
+        CustomCard(
+          whoClicked: widget.flag,
+          allData: allData,
+          colorCard: HexColor("#EEEEEE"),
+          textCard: "Verificar estoque",
+          icon: Icon(
+            Icons.storage,
+          ),
+          onTap: "verify",
+        )
+      ];
+    }
+    if (widget.flag == "bar") {
+      cardsList = [
+        CustomCard(
+          whoClicked: widget.flag,
+          allData: allData,
+          colorCard: HexColor("#EEEEEE"),
+          textCard: "Confirmar recebimento de carga",
+          icon: Icon(
+            Icons.check,
+            size: 30,
+          ),
+          onTap: "payBill",
+        )
+      ];
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    List<CustomCard> cardsList = [
-      CustomCard(
-        allData: allData,
-        colorCard: HexColor("#EEEEEE"),
-        textCard: "Pagamento",
-        icon: Icon(Icons.attach_money),
-        onTap: "payBill",
-      ),
-      CustomCard(
-        allData: allData,
-        colorCard: HexColor("#EEEEEE"),
-        textCard: "Verificação de estoque",
-        icon: Icon(Icons.storage),
-        onTap: "payBill",
-      )
-    ];
-
+    buildCards();
     return MyHomePage(
       colorAppBar: HexColor("#000000"),
       component: Container(

@@ -44,11 +44,11 @@ class _DriverPaymentState extends State<DriverPayment> {
   Widget build(BuildContext context) {
     final InfoShip args = ModalRoute.of(context).settings.arguments;
     return Scaffold(
-      backgroundColor: HexColor('#2E008B'),
+      backgroundColor: HexColor('#000000'),
       body: Container(
         child: FutureBuilder(
           future: fetchData(
-              'http://192.168.15.18:3000/shipping/5e651dc4c4320757c93594f5',
+              'http://ehlo.toranja.xyz/shipping/5e73db0c3be08f190d8f1bfc',
               args.productBrand,
               args.productType,
               args.quantity),
@@ -85,9 +85,8 @@ class _DriverPaymentState extends State<DriverPayment> {
                     flex: 1,
                     child: GestureDetector(
                       child: Button(
-                        onPressed: (){
+                        onPressed: () {
                           Navigator.pop(context);
-
                         },
                         borderRadius: BorderRadius.circular(25.0),
                         backgroundColor: HexColor("#FFFFFF"),

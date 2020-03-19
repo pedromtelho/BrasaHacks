@@ -24,16 +24,18 @@ class _ConfirmationScreenState extends State<ConfirmationScreen> {
 
   composeJson() {
     sendJson = {
-      "signed_data": {
-        "updateDate": "2020-03-10T22:44:41.651Z",
-        "lastUpdateHash": "pegar automaticamente (info shippment)",
-        "shippmentUpdateDescriptor": {
-          "transactionType": "1",
-          "productBrand": this.brandName,
-          "productType": this.typeName,
-          "quantity": this.quantityValue
-        },
-        "signature": "Fazer do algoritimo"
+      "signature": {
+        "signed_data": {
+          "updateDate": "2020-03-10T22:44:41.651Z",
+          "lastUpdateHash": "pegar automaticamente (info shippment)",
+          "shippmentUpdateDescriptor": {
+            "transactionType": "1",
+            "productBrand": this.brandName,
+            "productType": this.typeName,
+            "quantity": this.quantityValue
+          },
+          "signature": "Fazer do algoritimo"
+        }
       }
     };
 
@@ -193,7 +195,7 @@ class _ConfirmationScreenState extends State<ConfirmationScreen> {
               ),
               DragButton(
                 route: "/Valid",
-                object: InfoMarketPayment(composeJson()),
+                object: InfoMarketPayment(composeJson(), args.whoIsReceiving),
               )
             ],
           ),
