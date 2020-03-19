@@ -28,7 +28,7 @@ class _MarketViewState extends State<MarketView> {
           whoClicked: widget.flag,
           allData: allData,
           colorCard: HexColor("#EEEEEE"),
-          textCard: "Confirmar recebimento de carga",
+          textCard: "Confirmar recebimento de carga (CDD's)",
           icon: Icon(
             Icons.check,
             size: 30,
