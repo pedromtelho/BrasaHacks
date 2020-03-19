@@ -123,10 +123,10 @@ class _ListCardsState extends State<ListCards> {
                     onTap: () {
                       if (item.onTap == "map") {
                         getNextShipmentRoute(
-                            'http://ehlo.toranja.xyz/shipping/next/5e73e16861f1bf1ccddcfd72');
+                            'http://ehlo.toranja.xyz/shipping/next/5e73e83861f1bf1ccddcfd9a');
                       } else if (item.onTap == "pay") {
                         getOrderDetailsData(
-                            'http://ehlo.toranja.xyz/shipping/next/5e73e16861f1bf1ccddcfd72');
+                            'http://ehlo.toranja.xyz/shipping/next/5e73e83861f1bf1ccddcfd9a');
                       } else if (item.onTap == "payBill" ||
                           item.onTap == "addTo") {
                         scan(item.whoClicked, item.onTap);
